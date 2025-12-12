@@ -5,9 +5,9 @@ from sqlalchemy.orm import Session
 from datetime import datetime
 import os
 import uuid
-from database import engine, SessionLocal, get_db
-from models import File as FileModel
-import models
+from db.database import engine, SessionLocal, get_db
+from db.models import File as FileModel
+import db.models as models
 
 # Create database tables
 models.Base.metadata.create_all(bind=engine)
