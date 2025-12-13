@@ -40,3 +40,79 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Dropzone and file list styles */
+.dropzone {
+  border: 2px dashed #cbd5e1;
+  border-radius: 8px;
+  padding: 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  position: relative;
+  margin-bottom: 16px;
+}
+.dropzone.active {
+  background-color: #f1f5f9;
+  border-color: #60a5fa;
+}
+.file-input {
+  display: none;
+}
+.dropzone-label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+}
+.uploads {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.upload-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.upload-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+.upload-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 60%;
+}
+.upload-status {
+  text-transform: capitalize;
+}
+.progress {
+  height: 6px;
+  background: #e6e6e6;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #60a5fa, #3b82f6);
+  transition: width 0.2s ease;
+}
+
+/* files table */
+.files-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.files-table th,
+.files-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #e6e6e6;
+  text-align: left;
+}
+.files-table button {
+  margin-right: 8px;
+}
