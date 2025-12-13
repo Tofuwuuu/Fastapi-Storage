@@ -36,14 +36,22 @@ export default function Dropzone({ onUploadComplete, uploadUrl = "/api/upload" }
           setUploads((prev) => prev.map((u) => (u.name === file.name ? { ...u, status: "done", progress: 100 } : u)));
           resolve();
         } else {
+          const errMsg = `Upload failed: ${xhr.status} ${xhr.statusText}`;
+          console.error(errMsg, xhr.responseText);
           setUploads((prev) => prev.map((u) => (u.name === file.name ? { ...u, status: "error" } : u)));
-          reject(new Error(`Upload failed: ${xhr.statusText}`));
+          reject(new Error(errMsg));
         }
       };
 
       xhr.onerror = () => {
+        console.error("Network error during upload", xhr.responseText);
         setUploads((prev) => prev.map((u) => (u.name === file.name ? { ...u, status: "error" } : u)));
         reject(new Error("Network error"));
+      };
+
+      xhr.onabort = () => {
+        console.warn("Upload aborted");
+        reject(new Error("Upload aborted"));
       };
 
       xhr.send(form);
